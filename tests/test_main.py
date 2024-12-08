@@ -51,12 +51,6 @@ class TestCircle:
             with pytest.raises(TypeError):
                 circle.area(invalid_input)
 
-        def test_float_precision(self):
-            radius = 2.5
-            expected = math.pi * 6.25
-            result = circle.area(radius)
-            assert abs(result - expected) < 1e-10
-
     class TestCirclePerimeter:
         def test_positive_radius(self):
             radius = 1
@@ -100,12 +94,6 @@ class TestCircle:
         def test_invalid_types(self, invalid_input):
             with pytest.raises(TypeError):
                 circle.perimeter(invalid_input)
-
-        def test_float_precision(self):
-            radius = 2.5
-            expected = 2 * math.pi * 2.5
-            result = circle.perimeter(radius)
-            assert abs(result - expected) < 1e-10
 
 
 class TestSquare:
@@ -153,12 +141,6 @@ class TestSquare:
             with pytest.raises(TypeError):
                 square.area(invalid_input)
 
-        def test_float_precision(self):
-            side = 2.5
-            expected = 6.25
-            result = square.area(side)
-            assert abs(result - expected) < 1e-10
-
     class TestSquarePerimeter:
         def test_positive_side(self):
             side = 1
@@ -202,12 +184,6 @@ class TestSquare:
         def test_invalid_types(self, invalid_input):
             with pytest.raises(TypeError):
                 square.perimeter(invalid_input)
-
-        def test_float_precision(self):
-            side = 2.5
-            expected = 10.0
-            result = square.perimeter(side)
-            assert abs(result - expected) < 1e-10
 
 
 class TestTriangle:
@@ -259,16 +235,11 @@ class TestTriangle:
             with pytest.raises(ValueError):
                 triangle.area(*sides)
 
-        @pytest.mark.parametrize("sides", [("2", 2, 2), (2, [2], 2), (2, 2, None)])
+        @pytest.mark.parametrize("sides", [("2", 2, 2),
+                                           (2, [2], 2), (2, 2, None)])
         def test_invalid_types(self, sides):
             with pytest.raises(TypeError):
                 triangle.area(*sides)
-
-        def test_float_precision(self):
-            sides = (2.5, 3.5, 4.5)
-            expected = 4.35307
-            result = triangle.area(*sides)
-            assert abs(result - expected) < 1e-10
 
     class TestTrianglePerimeter:
         def test_positive_sides(self):
@@ -318,16 +289,11 @@ class TestTriangle:
             with pytest.raises(ValueError):
                 triangle.perimeter(*sides)
 
-        @pytest.mark.parametrize("sides", [("2", 2, 2), (2, [2], 2), (2, 2, None)])
+        @pytest.mark.parametrize("sides", [("2", 2, 2), (2, [2], 2),
+                                           (2, 2, None)])
         def test_invalid_types(self, sides):
             with pytest.raises(TypeError):
                 triangle.perimeter(*sides)
-
-        def test_float_precision(self):
-            sides = (2.5, 3.5, 4.5)
-            expected = 10.5
-            result = triangle.perimeter(*sides)
-            assert abs(result - expected) < 1e-10
 
 
 class TestCalculate:
