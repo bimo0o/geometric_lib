@@ -19,6 +19,9 @@ jobs:
       GROUP_NUMBER: "М3110"
 
     steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
     - name: Info
       run: |
         echo "ФИО: $STUDENT_NAME"
